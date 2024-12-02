@@ -47,8 +47,8 @@ from pathlib import Path
 import base64
 
 
-
-
+if not os.path.exists('pretrained_models/CosyVoice-300M-25Hz/cosyvoice.yaml'):
+    snapshot_download('iic/CosyVoice-300M-25Hz', cache_dir='pretrained_models/CosyVoice-300M-25Hz',local_dir='pretrained_models/CosyVoice-300M-25Hz')
 
 if not os.path.exists('pretrained_models/CosyVoice-300M/cosyvoice.yaml') or not os.path.exists('pretrained_models/CosyVoice-300M-SFT/cosyvoice.yaml'):
     snapshot_download('iic/CosyVoice-300M', cache_dir='pretrained_models/CosyVoice-300M',local_dir='pretrained_models/CosyVoice-300M')
@@ -239,6 +239,7 @@ def clone_mul():
     if not clone_model:
         print('第一次克隆加载模型...')
         clone_model = CosyVoice('pretrained_models/CosyVoice-300M')
+        # clone_model = CosyVoice('pretrained_models/CosyVoice-300M-25Hz')
     try:
         params=get_params(request)
         if not params['text']:

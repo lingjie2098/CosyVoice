@@ -40,7 +40,7 @@ import subprocess
 import shutil
 import datetime
 from modelscope import snapshot_download
-from cosyvoice.cli.cosyvoice import CosyVoice
+from cosyvoice.cli.cosyvoice import CosyVoice, CosyVoice2
 from cosyvoice.utils.file_utils import load_wav
 import torchaudio
 from pathlib import Path
@@ -242,7 +242,7 @@ def clone_mul():
         print('第一次克隆加载模型...')
         clone_model = CosyVoice('pretrained_models/CosyVoice-300M')
         # clone_model = CosyVoice('pretrained_models/CosyVoice-300M-25Hz')
-        # clone_model = CosyVoice('pretrained_models/CosyVoice2-0.5B')
+        # clone_model = CosyVoice2('pretrained_models/CosyVoice2-0.5B', load_jit=True, load_onnx=False, load_trt=False)
     try:
         params=get_params(request)
         if not params['text']:
